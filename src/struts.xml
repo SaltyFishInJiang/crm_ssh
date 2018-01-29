@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 配置用户userAction  -->
+	<package name="action" extends="struts-default" namespace="/">
+		<action name="user_*" class="userAction" method="{1}">
+			<!-- 登录验证 -->
+			<result name="login">/login.jsp</result>
+			<!-- 登录成功，跳转到主页面 -->
+			<result name="loginSuccess" type="redirect">/index.jsp</result>
+			<!-- 跳转到修改密码-->
+			<result name="toEdit" >/jsp/user/editPassword.jsp</result>
+			<!-- 修改密码成功，跳转到主页面 -->
+			<result name="editPswSuccess">/jsp/success.jsp</result>
+			<!-- 修改密码失败，转发到修改密码页面 -->
+			<result name="editPswFail" >/jsp/user/editPassword.jsp</result>
+			<!-- 列表 -->
+			<result name="list">/jsp/user/list.jsp</result>
+			<!-- 删除成功，转发到列表 -->
+			<result name="deleteSuccess" type="redirectAction">user_list.action</result>
+			<!-- 修改成功，转发到列表 -->
+			<result name="initialize" type="redirectAction">user_list.action</result>
+		</action>
+		
+		<!-- 配置客户，customerAction  -->
+		<action name="customer_*" class="customerAction" method="{1}">
+			<!-- 跳转到添加页面 -->
+			<result name="toAdd">/jsp/customer/add.jsp</result>
+			<!-- 添加成功 -->
+			<result name="addSuccess">/jsp/success.jsp</result>
+			<!-- 客户列表，查询所有 -->
+			<result name="list">/jsp/customer/list.jsp</result>
+			<!-- 删除成功，转发到客户列表 -->
+			<result name="deleteSuccess" type="redirectAction">customer_list.action</result>
+			<!-- 跳转到修改页面 -->
+			<result name="toEdit">/jsp/customer/edit.jsp</result>
+			<!-- 修改成功，转发到客户列表 -->
+			<result name="editSuccess" type="redirectAction">customer_list.action</result>
+			<!-- 条件查询，转发到客户列表 -->
+			<result name="listCriteria" >/jsp/customer/list.jsp</result>
+			<!-- 跳转到条件查询界面 -->
+			<result name="toSelect">/jsp/customer/select.jsp</result>
+			<!-- 条件查询列表-->
+			<result name="selectList">/jsp/customer/selectList.jsp</result>
+			<!-- 客户级别统计列表-->
+			<result name="countLevel">/jsp/customer/countLevel.jsp</result>
+			<!-- 客户来源统计列表-->
+			<result name="countSource">/jsp/customer/countSource.jsp</result>
+			
+		</action>
+		
+		<!-- 配置联系人，linkManAction  -->
+		<action name="linkman_*" class="linkManAction" method="{1}">
+			<!-- 跳转到添加页面 -->
+			<result name="toAdd">/jsp/linkman/add.jsp</result>
+			<!-- 添加成功 -->
+			<result name="addSuccess">/jsp/success.jsp</result>
+			<!-- 联系人列表，查询所有 -->
+			<result name="list">/jsp/linkman/list.jsp</result>
+			<!-- 删除成功，转发到联系人列表 -->
+			<result name="deleteSuccess" type="redirectAction">linkman_list.action</result>
+			<!-- 跳转到修改页面 -->
+			<result name="toEdit">/jsp/linkman/edit.jsp</result>
+			<!-- 修改成功，转发到联系人列表 -->
+			<result name="editSuccess" type="redirectAction">linkman_list.action</result>
+			<!-- 条件查询，转发到联系人列表 -->
+			<result name="listCriteria" >/jsp/linkman/list.jsp</result>
+			<!-- 跳转到条件查询界面 -->
+			<result name="toSelect">/jsp/linkman/select.jsp</result>
+			<!-- 综合条件查询列表-->
+			<result name="selectList">/jsp/linkman/selectList.jsp</result>
+		</action>
+		
+		<!-- 配置拜访记录，visit  -->
+		<action name="visit_*" class="visitAction" method="{1}">
+			<!-- 跳转到添加页面 -->
+			<result name="toAdd">/jsp/visit/add.jsp</result>
+			<!-- 添加成功 -->
+			<result name="addSuccess">/jsp/success.jsp</result>
+			<!-- 联系人列表，查询所有 -->
+			<result name="list">/jsp/visit/list.jsp</result>
+			<!-- 删除成功，转发到联系人列表 -->
+			<result name="deleteSuccess" type="redirectAction">visit_list.action</result>
+			<!-- 跳转到修改页面 -->
+			<result name="toEdit">/jsp/visit/edit.jsp</result>
+			<!-- 修改成功，转发到联系人列表 -->
+			<result name="editSuccess" type="redirectAction">visit_list.action</result>
+			<!-- 跳转到条件查询界面 -->
+			<result name="toSelect">/jsp/visit/select.jsp</result>
+			<!-- 综合条件查询列表-->
+			<result name="selectList">/jsp/visit/selectList.jsp</result>
+		</action>
+	</package>
+</struts>

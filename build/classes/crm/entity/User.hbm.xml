@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="crm.entity.User" table="user">
+		<id name="uid" column="uid">
+			<generator class="native"></generator>
+		</id>
+		<property name="username" column="username"></property>
+		<property name="password" column="password"></property>
+		<property name="address" column="address"></property>
+		<!-- 配置多个拜访记录 -->
+		<set name="visits"  cascade="save-update,delete" inverse="true">
+			<key column="uvid"></key>
+			<one-to-many class="crm.entity.Visit"/>
+		</set>
+	</class>
+</hibernate-mapping>

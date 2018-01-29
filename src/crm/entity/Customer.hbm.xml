@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- http://hibernate.org/dtd/hibernate-mapping-3.0.dtd -->
+<hibernate-mapping>
+	<!-- 1 配置类和表对应 
+		class标签
+		name属性：实体类全路径
+		table属性：数据库表名称
+	-->
+	<class name="crm.entity.Customer" table="customer">
+		<id name="cid" column="cid">
+			<generator class="native"></generator>
+		</id>
+		<property name="custName" column="custName"></property>
+		<property name="custPhone" column="custPhone"></property>
+		<property name="custMobile" column="custMobile"></property>
+		<!-- 配置多个联系人 -->
+		<set name="linkMans"  cascade="save-update,delete" inverse="true">
+			<key column="clid"></key>
+			<one-to-many class="crm.entity.LinkMan"/>
+		</set>
+		<!-- 配置多个拜访记录 -->
+		<set name="visits"  cascade="save-update,delete" inverse="true">
+			<key column="cvid"></key>
+			<one-to-many class="crm.entity.Visit"/>
+		</set>
+		<!-- 配置客户级别数据字典 -->
+		<many-to-one name="dictCustLevel" class="crm.entity.DictCustLevel" column="custLevel"></many-to-one>
+		<!-- 配置客户来源数据字典 -->
+		<many-to-one name="dictCustSource" class="crm.entity.DictCustSource" column="custSource"></many-to-one>
+	</class>
+</hibernate-mapping>
+
+
+
+
+

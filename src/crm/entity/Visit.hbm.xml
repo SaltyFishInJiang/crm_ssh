@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="crm.entity.Visit" table="visit">
+		<id name="vid" column="vid">
+			<generator class="native"></generator>
+		</id>
+		<property name="visitDate" column="visitDate"></property>
+		<property name="visitAddress" column="visitAddress"></property>
+		<property name="visitContent" column="visitContent"></property>
+		<!-- 配置用户对拜访记录，一对多 -->
+		<many-to-one name="user" class="crm.entity.User" column="uvid"></many-to-one>
+		<!-- 配置客户对拜访记录，一对多 -->
+		<many-to-one name="customer" class="crm.entity.Customer" column="cvid"></many-to-one>
+	</class>
+</hibernate-mapping>

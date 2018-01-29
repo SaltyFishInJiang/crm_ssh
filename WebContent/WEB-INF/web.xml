@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>crm_ssh</display-name>
+  <welcome-file-list>
+    <welcome-file>login.html</welcome-file>
+    <welcome-file>login.htm</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 配置Spring监听器以及核心配置文件位置 -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext_*.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener
+	</listener-class>
+  </listener>
+   <!--  配置Spring编码转换过滤器 -->
+  	<filter>  
+		<filter-name>CharacterEncodingFilter</filter-name>  
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class> 
+		<init-param>  
+			<param-name>encoding</param-name> 
+			<param-value>utf-8</param-value> 
+		</init-param>
+	</filter>  
+	<filter-mapping>  
+		<filter-name>CharacterEncodingFilter</filter-name> 
+		<url-pattern>*.action</url-pattern> 
+	</filter-mapping>
+  <!-- 配置Spring的过滤器，延迟关闭session -->
+  <filter>
+  	<filter-name>OpenSessionInViewFilter</filter-name>
+  	<filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>OpenSessionInViewFilter</filter-name>
+  	<url-pattern>*.action</url-pattern>
+  </filter-mapping>
+  <!-- 配置struts2过滤器 -->
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class> 
+	org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+	</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>

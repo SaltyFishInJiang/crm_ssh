@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- http://hibernate.org/dtd/hibernate-mapping-3.0.dtd -->
+<hibernate-mapping>
+	<!-- 1 配置类和表对应 
+		class标签
+		name属性：实体类全路径
+		table属性：数据库表名称
+	-->
+	<class name="crm.entity.DictCustSource" table="dictCustSource">
+		<id name="dcsid" column="dcsid">
+			<generator class="native"></generator>
+		</id>
+		<property name="dcsname" column="dcsname"></property>
+		<property name="dcsContent" column="dcsContent"></property>
+	</class>
+</hibernate-mapping>
+
+
+
+
+
